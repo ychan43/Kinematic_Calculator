@@ -2,10 +2,12 @@ package com.example.alexc.kinematic_calculator;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,6 +30,11 @@ public class MainActivity extends AppCompatActivity {
 
         TextView results = (TextView) findViewById(R.id.Results);
         results.setText(calculateKinEquation);
+
+        // Calculation Successful
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.TOP | Gravity.LEFT, 0 , 0);
+        toast.makeText(MainActivity.this, "Calculation Successful", toast.LENGTH_SHORT).show();
     }
 
     public String kinematics(String vi, String vf, String a, String t, String d, String var) {
@@ -135,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
                 double convAcceleration = Double.parseDouble(a);
                 // add the algorithm
             }
-
         }
+        return "Invalid Calculation";
     }
 }
