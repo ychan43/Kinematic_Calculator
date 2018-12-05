@@ -25,7 +25,7 @@
     <TextView
         android:id="@+id/InitialVtext"
         android:layout_width="wrap_content"
-        android:layout_height="25dp"
+        android:layout_height="35dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -36,7 +36,7 @@
     <TextView
         android:id="@+id/VariableText"
         android:layout_width="wrap_content"
-        android:layout_height="25dp"
+        android:layout_height="35dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="4dp"
@@ -47,7 +47,7 @@
     <EditText
         android:id="@+id/InitialVinp"
         android:layout_width="75dp"
-        android:layout_height="25dp"
+        android:layout_height="35dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:ems="10"
@@ -61,7 +61,7 @@
     <TextView
         android:id="@+id/FinalVtext"
         android:layout_width="wrap_content"
-        android:layout_height="25dp"
+        android:layout_height="35dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -72,18 +72,19 @@
     <EditText
         android:id="@+id/FinalVinp"
         android:layout_width="75dp"
-        android:layout_height="25dp"
+        android:layout_height="35dp"
         android:layout_marginStart="12dp"
         android:layout_marginLeft="12dp"
         android:ems="10"
         android:inputType="numberDecimal"
+        android:textSize="10sp"
         app:layout_constraintStart_toEndOf="@+id/FinalVtext"
         app:layout_constraintTop_toTopOf="@+id/FinalVtext" />
 
     <TextView
         android:id="@+id/Acctext"
         android:layout_width="wrap_content"
-        android:layout_height="25dp"
+        android:layout_height="35dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -94,19 +95,20 @@
     <EditText
         android:id="@+id/Accinp"
         android:layout_width="75dp"
-        android:layout_height="25dp"
+        android:layout_height="35dp"
         android:layout_marginStart="12dp"
         android:layout_marginLeft="12dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="numberDecimal"
+        android:textSize="10sp"
         app:layout_constraintStart_toEndOf="@+id/Acctext"
         app:layout_constraintTop_toBottomOf="@+id/FinalVinp" />
 
     <TextView
         android:id="@+id/Timetext"
         android:layout_width="wrap_content"
-        android:layout_height="25dp"
+        android:layout_height="35dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -117,19 +119,38 @@
     <EditText
         android:id="@+id/Timeinp"
         android:layout_width="75dp"
-        android:layout_height="25dp"
+        android:layout_height="35dp"
         android:layout_marginStart="12dp"
         android:layout_marginLeft="12dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="numberDecimal"
+        android:textSize="10sp"
         app:layout_constraintStart_toEndOf="@+id/Timetext"
         app:layout_constraintTop_toBottomOf="@+id/Accinp" />
+
+    <EditText
+        android:id="@+id/Variableinp"
+        android:layout_width="75dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:height="25dp"
+        android:ems="70"
+        android:inputType="text"
+        android:text="asdfas"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        android:visibility="visible"
+        app:layout_constrainedHeight="true"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintStart_toEndOf="@+id/VariableText"
+        app:layout_constraintTop_toBottomOf="@+id/InstruText" />
 
     <TextView
         android:id="@+id/Disttext"
         android:layout_width="wrap_content"
-        android:layout_height="25dp"
+        android:layout_height="35dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -140,12 +161,13 @@
     <EditText
         android:id="@+id/Distinp"
         android:layout_width="75dp"
-        android:layout_height="25dp"
+        android:layout_height="35dp"
         android:layout_marginStart="12dp"
         android:layout_marginLeft="12dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="numberDecimal"
+        android:textSize="10sp"
         app:layout_constraintStart_toEndOf="@+id/Disttext"
         app:layout_constraintTop_toBottomOf="@+id/Timeinp" />
 
@@ -168,13 +190,14 @@
     <TextView
         android:id="@+id/Results"
         android:layout_width="370dp"
-        android:layout_height="26dp"
+        android:layout_height="25dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="Result"
+        android:textSize="14sp"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
