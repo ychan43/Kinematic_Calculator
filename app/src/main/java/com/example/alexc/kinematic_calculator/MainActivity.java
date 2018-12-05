@@ -26,17 +26,21 @@ public class MainActivity extends AppCompatActivity {
         String distance = ((EditText)findViewById(R.id.Distinp)).getText().toString();
         String variable = ((EditText)findViewById(R.id.Variableinp)).getText().toString();
 
-        String calculateKinEquation = kinematics(initialVelocity, finalVelocity, acceleration, time, distance, variable);
 
-        TextView results = (TextView) findViewById(R.id.Results);
-        results.setText(calculateKinEquation);
+
+        String calculateKinEquation = kinematics(initialVelocity, finalVelocity, acceleration, time, distance, variable);
+        TextView output = (TextView) findViewById(R.id.Results);
+        output.setText(calculateKinEquation);
+
+
 
         // Calculation Successful
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.TOP | Gravity.LEFT, 0 , 0);
         toast.makeText(MainActivity.this, "Calculation Successful", toast.LENGTH_SHORT).show();
-    }
 
+
+    }
     public String kinematics(String vi, String vf, String a, String t, String d, String var) {
 
 //        if (vf == null) {
@@ -143,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
 //                // add the algorithm
 //            }
 //        }
-        if (vf == null) {
+        if (vf.equals("")) {
             if (var.equals("iVel")) {
                 double convAcceleration = Double.parseDouble(a);
                 double convTime = Double.parseDouble(t);
@@ -151,7 +155,9 @@ public class MainActivity extends AppCompatActivity {
                 // add the algorithm here
                 return "iVel = " + ((convDistance - (0.5 * convAcceleration * convTime * convTime)) / convTime);
             }
+        } else {
+            return "Invalid Calculation";
         }
-        return "Invalid Calculation";
+        return "";
     }
 }
