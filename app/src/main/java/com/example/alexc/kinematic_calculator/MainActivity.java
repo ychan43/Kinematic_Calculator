@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 double convAcceleration = Double.parseDouble(a);
 
                 // add the algorithm here
+                
 
             }
         }
