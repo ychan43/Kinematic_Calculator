@@ -23,12 +23,12 @@ public class MainActivity extends AppCompatActivity {
         String finalVelocity = ((EditText)findViewById(R.id.FinalVinp)).getText().toString();
         String acceleration = ((EditText)findViewById(R.id.Accinp)).getText().toString();
         String time = ((EditText)findViewById(R.id.Timeinp)).getText().toString();
-        String distance = ((EditText)findViewById(R.id.Distinp)).getText().toString();
+        String displacement = ((EditText)findViewById(R.id.Dispinp)).getText().toString();
         String variable = ((EditText)findViewById(R.id.Variableinp)).getText().toString();
 
 
 
-        String calculateKinEquation = kinematics(initialVelocity, finalVelocity, acceleration, time, distance, variable);
+        String calculateKinEquation = kinematics(initialVelocity, finalVelocity, acceleration, time, displacement, variable);
         TextView output = (TextView) findViewById(R.id.Results);
         output.setText(calculateKinEquation);
 
@@ -47,104 +47,104 @@ public class MainActivity extends AppCompatActivity {
             if (var.equals("iVel")) {
                 double convAcceleration = Double.parseDouble(a);
                 double convTime = Double.parseDouble(t);
-                double convDistance = Double.parseDouble(d);
+                double convDisplacement = Double.parseDouble(d);
 
                 // add the algorithm here
-                return "iVel = " + String.format("%.3f", ((convDistance - (0.5 * convAcceleration * convTime * convTime)) / convTime)) + " meters/second";
+                return "iVel = " + String.format("%.3f", ((convDisplacement - (0.5 * convAcceleration * convTime * convTime)) / convTime)) + " meters/second";
 
-            } else if (var.equals("Dist")) {
+            } else if (var.equals("Disp")) {
                 double convAcceleration = Double.parseDouble(a);
                 double convTime = Double.parseDouble(t);
                 double convInitialVel = Double.parseDouble(vi);
 
                 // add the algorithm here
-                return "Dist = " + String.format("%.3f", ((0.5 * convAcceleration * convTime * convTime) + (convInitialVel * convTime))) + " meters";
+                return "Disp = " + String.format("%.3f", ((0.5 * convAcceleration * convTime * convTime) + (convInitialVel * convTime))) + " meters";
 
             } else if (var.equals("Accel")) {
                 double convTime = Double.parseDouble(t);
-                double convDistance = Double.parseDouble(d);
+                double convDisplacement = Double.parseDouble(d);
                 double convInitialVel = Double.parseDouble(vi);
 
                 // add the algorithm here
-                return "Accel = " + String.format("%.3f", (2 * (convDistance - (convInitialVel * convTime)) / (convTime * convTime))) + " meters/second^2";
+                return "Accel = " + String.format("%.3f", (2 * (convDisplacement - (convInitialVel * convTime)) / (convTime * convTime))) + " meters/second^2";
 
             } else if (var.equals("Time")) {
-                double convDistance = Double.parseDouble(d);
+                double convDisplacement = Double.parseDouble(d);
                 double convInitialVel = Double.parseDouble(vi);
                 double convAcceleration = Double.parseDouble(a);
 
                 // add the algorithm here
-                
+                return "Time = " + String.format("%.3f", ((((-1 * convInitialVel)) - Math.sqrt((convInitialVel * convInitialVel) + (2 * convAcceleration * convDisplacement))) / convAcceleration)) + " seconds";
 
             }
         }
         if (a.equals("")) {
             if (var.equals("fVel")) {
                 double convTime = Double.parseDouble(t);
-                double convDistance = Double.parseDouble(d);
+                double convDisplacement = Double.parseDouble(d);
                 double convInitialVel = Double.parseDouble(vi);
 
                 // add the algorithm here
-                return "fVel = " + String.format("%,3f", (((2 * convDistance) / convTime) - convInitialVel)) + "meters/second";
+                return "fVel = " + String.format("%,3f", (((2 * convDisplacement) / convTime) - convInitialVel)) + "meters/second";
 
             } else if (var.equals("iVel")) {
                 double convTime = Double.parseDouble(t);
-                double convDistance = Double.parseDouble(d);
+                double convDisplacement = Double.parseDouble(d);
                 double convFinalVel = Double.parseDouble(vf);
 
                 // add the algorithm
-                return "iVel = " + String.format("%.3f", (((2 * convDistance) / convTime) - convFinalVel)) + " meters/second";
+                return "iVel = " + String.format("%.3f", (((2 * convDisplacement) / convTime) - convFinalVel)) + " meters/second";
 
-            } else if (var.equals("Dist")) {
+            } else if (var.equals("Disp")) {
                 double convFinalVel = Double.parseDouble(vf);
                 double convTime = Double.parseDouble(t);
                 double convInitialVel = Double.parseDouble(vi);
 
                 // add the algorithm
-                return "Dist = " + String.format("%.3f", (((convInitialVel + convFinalVel) / 2) * convTime)) + " meters";
+                return "Disp = " + String.format("%.3f", (((convInitialVel + convFinalVel) / 2) * convTime)) + " meters";
 
             } else if (var.equals("Time")) {
-                double convDistance = Double.parseDouble(d);
+                double convDisplacement = Double.parseDouble(d);
                 double convFinalVel = Double.parseDouble(vf);
                 double convInitialVel = Double.parseDouble(vi);
 
                 // add the algorithm
-                return "Time = " + String.format("%.3f", ((2 * convDistance) / (convInitialVel + convFinalVel))) + " seconds";
+                return "Time = " + String.format("%.3f", ((2 * convDisplacement) / (convInitialVel + convFinalVel))) + " seconds";
 
             }
         }
         if (t.equals("")) {
             if (var.equals("fVel")) {
-                double convDistance = Double.parseDouble(d);
+                double convDisplacement = Double.parseDouble(d);
                 double convInitialVel = Double.parseDouble(vi);
                 double convAcceleration = Double.parseDouble(a);
 
                 // add the algorithm
-                return "fVel = " + String.format("%.3f", Math.sqrt((convInitialVel * convInitialVel) + (2 * convAcceleration * convDistance))) + " meters/second";
+                return "fVel = " + String.format("%.3f", Math.sqrt((convInitialVel * convInitialVel) + (2 * convAcceleration * convDisplacement))) + " meters/second";
 
             } else if (var.equals("iVel")) {
-                double convDistance = Double.parseDouble(d);
+                double convDisplacement = Double.parseDouble(d);
                 double convFinalVel = Double.parseDouble(vf);
                 double convAcceleration = Double.parseDouble(a);
 
                 // add the algorithm
-                return "iVel = " + String.format("%.3f", Math.sqrt((2 * convAcceleration * convDistance) - (convFinalVel * convFinalVel))) + " meters/second";
+                return "iVel = " + String.format("%.3f", Math.sqrt((2 * convAcceleration * convDisplacement) - (convFinalVel * convFinalVel))) + " meters/second";
 
-            } else if (var.equals("Dist")) {
+            } else if (var.equals("Disp")) {
                 double convFinalVel = Double.parseDouble(vf);
                 double convInitialVel = Double.parseDouble(vi);
                 double convAcceleration = Double.parseDouble(a);
 
                 // add the algorithm
-                return "Dist = " + String.format("%.3f", ((((convFinalVel * convFinalVel) - (convInitialVel * convInitialVel)) / (2 * convAcceleration)))) + " meters";
+                return "Disp = " + String.format("%.3f", ((((convFinalVel * convFinalVel) - (convInitialVel * convInitialVel)) / (2 * convAcceleration)))) + " meters";
 
             } else if (var.equals("Accel")) {
                 double convFinalVel = Double.parseDouble(vf);
                 double convInitialVel = Double.parseDouble(vi);
-                double convDistance = Double.parseDouble(d);
+                double convDisplacement = Double.parseDouble(d);
 
                 // add the algorithm
-                return "Accel" + String.format("%.3f", ((((convFinalVel * convFinalVel) - (convInitialVel * convInitialVel)) / (2 * convDistance)))) + "meters/second^2";
+                return "Accel = " + String.format("%.3f", ((((convFinalVel * convFinalVel) - (convInitialVel * convInitialVel)) / (2 * convDisplacement)))) + " meters/second^2";
 
             }
 
