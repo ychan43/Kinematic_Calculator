@@ -9,7 +9,7 @@
     <TextView
         android:id="@+id/InstruText"
         android:layout_width="0dp"
-        android:layout_height="75dp"
+        android:layout_height="54dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="10dp"
@@ -29,7 +29,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:text="Initial Velocity"
+        android:text="Initial Velocity :"
+        android:textColor="#ff000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/VariableText" />
 
@@ -39,10 +40,11 @@
         android:layout_height="35dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="4dp"
-        android:text="Variable"
+        android:layout_marginTop="8dp"
+        android:text="Find :"
+        android:textColor="#ff000000"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/InstruText" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
         android:id="@+id/InitialVinp"
@@ -51,7 +53,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:ems="10"
-        android:inputType="numberDecimal"
+        android:inputType="number|numberSigned|numberDecimal"
         android:textColor="#ff000000"
         android:textSize="10sp"
         android:visibility="visible"
@@ -65,7 +67,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:text="Final Velocity"
+        android:text="Final Velocity :"
+        android:textColor="#ff000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/InitialVtext" />
 
@@ -76,7 +79,7 @@
         android:layout_marginStart="12dp"
         android:layout_marginLeft="12dp"
         android:ems="10"
-        android:inputType="numberDecimal"
+        android:inputType="number|numberSigned|numberDecimal"
         android:textSize="10sp"
         app:layout_constraintStart_toEndOf="@+id/FinalVtext"
         app:layout_constraintTop_toTopOf="@+id/FinalVtext" />
@@ -88,7 +91,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:text="Acceleration"
+        android:text="Acceleration :"
+        android:textColor="#ff000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/FinalVtext" />
 
@@ -96,14 +100,15 @@
         android:id="@+id/Accinp"
         android:layout_width="75dp"
         android:layout_height="35dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:ems="10"
-        android:inputType="numberDecimal"
+        android:inputType="number|numberSigned|numberDecimal"
         android:textSize="10sp"
+        app:layout_constrainedHeight="true"
+        app:layout_constrainedWidth="true"
         app:layout_constraintStart_toEndOf="@+id/Acctext"
-        app:layout_constraintTop_toBottomOf="@+id/FinalVinp" />
+        app:layout_constraintTop_toTopOf="@+id/Acctext" />
 
     <TextView
         android:id="@+id/Timetext"
@@ -112,7 +117,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:text="Time"
+        android:text="Time :"
+        android:textColor="#ff000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Acctext" />
 
@@ -122,12 +128,11 @@
         android:layout_height="35dp"
         android:layout_marginStart="12dp"
         android:layout_marginLeft="12dp"
-        android:layout_marginTop="8dp"
         android:ems="10"
-        android:inputType="numberDecimal"
+        android:inputType="number|numberSigned|numberDecimal"
         android:textSize="10sp"
         app:layout_constraintStart_toEndOf="@+id/Timetext"
-        app:layout_constraintTop_toBottomOf="@+id/Accinp" />
+        app:layout_constraintTop_toTopOf="@+id/Timetext" />
 
     <EditText
         android:id="@+id/Variableinp"
@@ -138,14 +143,13 @@
         android:height="25dp"
         android:ems="70"
         android:inputType="text"
-        android:text="asdfas"
         android:textColor="@android:color/black"
         android:textSize="14sp"
         android:visibility="visible"
         app:layout_constrainedHeight="true"
         app:layout_constrainedWidth="true"
         app:layout_constraintStart_toEndOf="@+id/VariableText"
-        app:layout_constraintTop_toBottomOf="@+id/InstruText" />
+        app:layout_constraintTop_toTopOf="@+id/VariableText" />
 
     <TextView
         android:id="@+id/Disttext"
@@ -154,7 +158,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:text="Distance"
+        android:text="Distance :"
+        android:textColor="#ff000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Timetext" />
 
@@ -166,7 +171,7 @@
         android:layout_marginLeft="12dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:inputType="numberDecimal"
+        android:inputType="number|numberSigned|numberDecimal"
         android:textSize="10sp"
         app:layout_constraintStart_toEndOf="@+id/Disttext"
         app:layout_constraintTop_toBottomOf="@+id/Timeinp" />
@@ -189,18 +194,28 @@
 
     <TextView
         android:id="@+id/Results"
-        android:layout_width="370dp"
+        android:layout_width="0dp"
         android:layout_height="25dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
         android:text="Result"
         android:textSize="14sp"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Calculate" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="369dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="8dp"
+        android:text='(In "Variable", type in "iVel" for initial velocity, "fVel" for final velocity, "Accel" for acceleration, "Time" for time, and "Dist" for distance.)'
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@+id/InstruText"
+        tools:layout_editor_absoluteX="8dp" />
 
 </android.support.constraint.ConstraintLayout>

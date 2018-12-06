@@ -43,117 +43,127 @@ public class MainActivity extends AppCompatActivity {
     }
     public String kinematics(String vi, String vf, String a, String t, String d, String var) {
 
-//        if (vf == null) {
-//            if (var.equals("iVel")) {
-//                double convAcceleration = Double.parseDouble(a);
-//                double convTime = Double.parseDouble(t);
-//                double convDistance = Double.parseDouble(d);
-//                // add the algorithm here
-//
-//            } else if (var.equals("Dist")) {
-//                double convAcceleration = Double.parseDouble(a);
-//                double convTime = Double.parseDouble(t);
-//                double convInitialVel = Double.parseDouble(vi);
-//                // add the algorithm here
-//
-//            } else if (var.equals("Acccel")) {
-//                double convTime = Double.parseDouble(t);
-//                double convDistance = Double.parseDouble(d);
-//                double convInitialVel = Double.parseDouble(vi);
-//                // add the algorithm here
-//
-//            } else if (var.equals("Time")) {
-//                double convDistance = Double.parseDouble(d);
-//                double convInitialVel = Double.parseDouble(vi);
-//                double convAcceleration = Double.parseDouble(a);
-//                // add the algorithm here
-//
-//            }
-//        } else if (a == null) {
-//            if (var.equals("fVel")) {
-//                double convTime = Double.parseDouble(t);
-//                double convDistance = Double.parseDouble(d);
-//                double convInitialVel = Double.parseDouble(vi);
-//                // add the algorithm here
-//
-//            } else if (var.equals("iVel")) {
-//                double convTime = Double.parseDouble(t);
-//                double convDistance = Double.parseDouble(d);
-//                double convFinalVel = Double.parseDouble(vf);
-//                // add the algorithm
-//
-//            } else if (var.equals("Dist")) {
-//                double convFinalVel = Double.parseDouble(vf);
-//                double convTime = Double.parseDouble(t);
-//                double convInitialVel = Double.parseDouble(vi);
-//                // add the algorithm
-//
-//            } else if (var.equals("Time")) {
-//                double convDistance = Double.parseDouble(d);
-//                double convFinalVel = Double.parseDouble(vf);
-//                double convInitialVel = Double.parseDouble(vi);
-//                // add the algorithm
-//
-//            }
-//        } else if (t == null) {
-//            if (var.equals("fVel")) {
-//                double convDistance = Double.parseDouble(d);
-//                double convInitialVel = Double.parseDouble(vi);
-//                double convAcceleration = Double.parseDouble(a);
-//                // add the algorithm
-//
-//            } else if (var.equals("iVel")) {
-//                double convDistance = Double.parseDouble(d);
-//                double convFinalVel = Double.parseDouble(vf);
-//                double convAcceleration = Double.parseDouble(a);
-//                // add the algorithm
-//
-//            } else if (var.equals("Dist")) {
-//                double convFinalVel = Double.parseDouble(vf);
-//                double convInitialVel = Double.parseDouble(vi);
-//                double convAcceleration = Double.parseDouble(a);
-//                // add the algorithm
-//
-//            } else if (var.equals("Accel")) {
-//                double convFinalVel = Double.parseDouble(vf);
-//                double convInitialVel = Double.parseDouble(vi);
-//                double convDistance = Double.parseDouble(d);
-//                // add the algorithm
-//
-//            }
-//
-//        } else if (d == null) {
-//            if (var.equals("fVel")) {
-//                double convInitialVel = Double.parseDouble(vi);
-//                double convAcceleration = Double.parseDouble(a);
-//                double convTime = Double.parseDouble(t);
-//                // add the algorithm
-//
-//            } else if (var.equals("iVel")) {
-//                double convFinalVel = Double.parseDouble(vf);
-//                double convAcceleration = Double.parseDouble(a);
-//                double convTime = Double.parseDouble(t);
-//                // add the algorithm
-//
-//            } else if (var.equals("Accel")) {
-//                double convFinalVel = Double.parseDouble(vf);
-//                double convInitialVel = Double.parseDouble(vi);
-//                double convTime = Double.parseDouble(t);
-//
-//            } else if (var.equals("Time")) {
-//                double convFinalVel = Double.parseDouble(vf);
-//                double convInitialVel = Double.parseDouble(vi);
-//                double convAcceleration = Double.parseDouble(a);
-//                // add the algorithm
-//            }
-//        }
         if (vf.equals("")) {
             if (var.equals("iVel")) {
                 double convAcceleration = Double.parseDouble(a);
                 double convTime = Double.parseDouble(t);
                 double convDistance = Double.parseDouble(d);
+
                 // add the algorithm here
-                return "iVel = " + ((convDistance - (0.5 * convAcceleration * convTime * convTime)) / convTime);
+                return "iVel = " + ((convDistance - (0.5 * convAcceleration * convTime * convTime)) / convTime) + " meters/second";
+
+            } else if (var.equals("Dist")) {
+                double convAcceleration = Double.parseDouble(a);
+                double convTime = Double.parseDouble(t);
+                double convInitialVel = Double.parseDouble(vi);
+
+                // add the algorithm here
+                return "Dist = " + ((0.5 * convAcceleration * convTime * convTime) + (convInitialVel * convTime)) + " meters";
+
+            } else if (var.equals("Accel")) {
+                double convTime = Double.parseDouble(t);
+                double convDistance = Double.parseDouble(d);
+                double convInitialVel = Double.parseDouble(vi);
+
+                // add the algorithm here
+                return "Accel = " + (2 * (convDistance - (convInitialVel * convTime)) / (convTime * convTime)) + " meters/second^2";
+
+            } else if (var.equals("Time")) {
+                double convDistance = Double.parseDouble(d);
+                double convInitialVel = Double.parseDouble(vi);
+                double convAcceleration = Double.parseDouble(a);
+                // add the algorithm here
+
+            }
+        }
+        if (a.equals("")) {
+            if (var.equals("fVel")) {
+                double convTime = Double.parseDouble(t);
+                double convDistance = Double.parseDouble(d);
+                double convInitialVel = Double.parseDouble(vi);
+
+                // add the algorithm here
+                return "fVel = " + (((2 * convDistance) / convTime) - convInitialVel) + "meters/second";
+
+            } else if (var.equals("iVel")) {
+                double convTime = Double.parseDouble(t);
+                double convDistance = Double.parseDouble(d);
+                double convFinalVel = Double.parseDouble(vf);
+
+                // add the algorithm
+                return "iVel = " + (((2 * convDistance) / convTime) - convFinalVel) + " meters/second";
+
+            } else if (var.equals("Dist")) {
+                double convFinalVel = Double.parseDouble(vf);
+                double convTime = Double.parseDouble(t);
+                double convInitialVel = Double.parseDouble(vi);
+
+                // add the algorithm
+                return "Dist = " + (((convInitialVel + convFinalVel) / 2) * convTime) + " meters";
+
+            } else if (var.equals("Time")) {
+                double convDistance = Double.parseDouble(d);
+                double convFinalVel = Double.parseDouble(vf);
+                double convInitialVel = Double.parseDouble(vi);
+
+                // add the algorithm
+                return "Time = " + ((2 * convDistance) / (convInitialVel + convFinalVel)) + " seconds";
+
+            }
+        }
+        if (t.equals("")) {
+            if (var.equals("fVel")) {
+                double convDistance = Double.parseDouble(d);
+                double convInitialVel = Double.parseDouble(vi);
+                double convAcceleration = Double.parseDouble(a);
+
+                // add the algorithm
+                return "fVel = " + Math.sqrt((convInitialVel * convInitialVel) + (2 * convAcceleration * convDistance)) + " meters/second";
+
+            } else if (var.equals("iVel")) {
+                double convDistance = Double.parseDouble(d);
+                double convFinalVel = Double.parseDouble(vf);
+                double convAcceleration = Double.parseDouble(a);
+                // add the algorithm
+
+            } else if (var.equals("Dist")) {
+                double convFinalVel = Double.parseDouble(vf);
+                double convInitialVel = Double.parseDouble(vi);
+                double convAcceleration = Double.parseDouble(a);
+                // add the algorithm
+
+            } else if (var.equals("Accel")) {
+                double convFinalVel = Double.parseDouble(vf);
+                double convInitialVel = Double.parseDouble(vi);
+                double convDistance = Double.parseDouble(d);
+                // add the algorithm
+
+            }
+
+        }
+        if (d.equals("")) {
+            if (var.equals("fVel")) {
+                double convInitialVel = Double.parseDouble(vi);
+                double convAcceleration = Double.parseDouble(a);
+                double convTime = Double.parseDouble(t);
+                // add the algorithm
+
+            } else if (var.equals("iVel")) {
+                double convFinalVel = Double.parseDouble(vf);
+                double convAcceleration = Double.parseDouble(a);
+                double convTime = Double.parseDouble(t);
+                // add the algorithm
+
+            } else if (var.equals("Accel")) {
+                double convFinalVel = Double.parseDouble(vf);
+                double convInitialVel = Double.parseDouble(vi);
+                double convTime = Double.parseDouble(t);
+
+            } else if (var.equals("Time")) {
+                double convFinalVel = Double.parseDouble(vf);
+                double convInitialVel = Double.parseDouble(vi);
+                double convAcceleration = Double.parseDouble(a);
+                // add the algorithm
             }
         } else {
             return "Invalid Calculation";
