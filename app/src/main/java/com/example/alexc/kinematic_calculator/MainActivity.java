@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
                 double convAcceleration = Double.parseDouble(a);
 
                 // add the algorithm
-                return "fVel = " + Math.sqrt((convInitialVel * convInitialVel) + (2 * convAcceleration * convDistance)) + " meters/second";
+                return "fVel = " + String.format("%.3f", Math.sqrt((convInitialVel * convInitialVel) + (2 * convAcceleration * convDistance))) + " meters/second";
 
             } else if (var.equals("iVel")) {
                 double convDistance = Double.parseDouble(d);
