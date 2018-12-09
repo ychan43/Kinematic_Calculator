@@ -7,11 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Graph extends AppCompatActivity {
+public class Results extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_graph);
+        setContentView(R.layout.activity_results);
 
         Button mainBtn = (Button) findViewById(R.id.ReturnButton);
         mainBtn.setOnClickListener(new View.OnClickListener() {
