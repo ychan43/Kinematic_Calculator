@@ -27,31 +27,35 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
     public void buttonOnClick(View v) {
 
         Button Calculate = (Button) v;
-        String initialVelocity = ((EditText)findViewById(R.id.InitialVinp)).getText().toString();
-        String finalVelocity = ((EditText)findViewById(R.id.FinalVinp)).getText().toString();
-        String acceleration = ((EditText)findViewById(R.id.Accinp)).getText().toString();
-        String time = ((EditText)findViewById(R.id.Timeinp)).getText().toString();
-        String displacement = ((EditText)findViewById(R.id.Dispinp)).getText().toString();
-        String variable = ((EditText)findViewById(R.id.Variableinp)).getText().toString();
-
+        String initialVelocity = ((EditText) findViewById(R.id.InitialVinp)).getText().toString();
+        String finalVelocity = ((EditText) findViewById(R.id.FinalVinp)).getText().toString();
+        String acceleration = ((EditText) findViewById(R.id.Accinp)).getText().toString();
+        String time = ((EditText) findViewById(R.id.Timeinp)).getText().toString();
+        String displacement = ((EditText) findViewById(R.id.Dispinp)).getText().toString();
+        String variable = ((EditText) findViewById(R.id.Variableinp)).getText().toString();
 
 
         String calculateKinEquation = kinematics(initialVelocity, finalVelocity, acceleration, time, displacement, variable);
         TextView output = (TextView) findViewById(R.id.Results);
         output.setText(calculateKinEquation);
 
+        String usedKinEquation = usedKinematics(initialVelocity, finalVelocity, acceleration, time, displacement, variable);
+        TextView eqOutput = (TextView) findViewById(R.id.equationResult);
+        eqOutput.setText(usedKinEquation);
 
 
         // Calculation Successful
         Toast toast = new Toast(getApplicationContext());
-        toast.setGravity(Gravity.TOP | Gravity.LEFT, 0 , 0);
+        toast.setGravity(Gravity.TOP | Gravity.LEFT, 0, 0);
         toast.makeText(MainActivity.this, "Calculation Successful", toast.LENGTH_SHORT).show();
 
 
     }
+
     public String kinematics(String vi, String vf, String a, String t, String d, String var) {
 
         // Solving for Initial Velocity (Generate Velocity vs. time graph)
@@ -86,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                 double convAcceleration = Double.parseDouble(a);
 
                 // add the algorithm
-                return "iVel = " + String.format("%.3f", Math.sqrt((2 * convAcceleration * convDisplacement) - (convFinalVel * convFinalVel))) + " meters/second";
+                return "iVel = " + String.format("%.3f", Math.sqrt((convFinalVel * convFinalVel) - (2 * convAcceleration * convDisplacement))) + " meters/second";
             }
             if (vi.equals("")) {
                 double convAcceleration = Double.parseDouble(a);
@@ -194,7 +198,14 @@ public class MainActivity extends AppCompatActivity {
                 double convAcceleration = Double.parseDouble(a);
 
                 // add the algorithm here
-                return "Time = " + String.format("%.3f", ((((-1 * convInitialVel)) - Math.sqrt((convInitialVel * convInitialVel) + (2 * convAcceleration * convDisplacement))) / convAcceleration)) + " seconds";
+                double rt1 = ((((-1 * convInitialVel)) - Math.sqrt((convInitialVel * convInitialVel) + (2 * convAcceleration * convDisplacement))) / convAcceleration);
+                double rt2 = ((((-1 * convInitialVel)) + Math.sqrt((convInitialVel * convInitialVel) + (2 * convAcceleration * convDisplacement))) / convAcceleration);
+
+                if (rt1 > 0) {
+                    return "Time = " + String.format("%.3f", rt1) + " seconds";
+                } else {
+                    return "Time = " + String.format("%.3f", rt2) + " seconds";
+                }
             }
             if (t.equals("")) {
                 double convFinalVel = Double.parseDouble(vf);
@@ -245,10 +256,118 @@ public class MainActivity extends AppCompatActivity {
         }
         return "";
     }
+
+    // Print out the equation used
+    public String usedKinematics(String ivel, String fvel, String accel, String time, String disp, String varia) {
+
+        // Solving for Initial Velocity (Generate Velocity vs. time graph)
+        if (varia.equals("iVel")) {
+            if (fvel.equals("") && ivel.equals("")) {
+                // display the algorithm here
+                return "Disp  =  (1/2 * Accel * Time^2)  +  (iVel * Time)";   // 1
+            }
+            if (disp.equals("") && ivel.equals("")) {
+                // display the algorithm
+                return "fVel  =  iVel  +  (Accel * Time)";   // 3
+            }
+            if (accel.equals("") && ivel.equals("")) {
+                // display the algorithm
+                return "Disp  =  ((iVel + fVel) / 2)  *  Time";   // 4
+            }
+            if (time.equals("") && ivel.equals("")) {
+                // display the algorithm
+                return "fVel^2  =  iVel^2  +  (2 * Accel * Disp)";    // 2
+            }
+            if (ivel.equals("")) {
+                // display the algorithm here
+                return "Disp  =  (1/2 * Accel * Time^2)  +  (iVel * Time)";
+            }
+        }
+
+        // Solving for Final Velocity (Generate Velocity vs. time graph)
+        if (varia.equals("fVel")) {
+            if (disp.equals("") && fvel.equals("")) {
+                // add the algorithm
+                return "fVel  =  iVel  +   (Accel * Time)";
+            }
+            if (accel.equals("") && fvel.equals("")) {
+                // add the algorithm here
+                return "Disp  =  ((iVel + fVel) / 2)  *  Time";
+            }
+            if (time.equals("") && fvel.equals("")) {
+               // add the algorithm
+                return "fVel^2  =  iVel^2  +  (2 * Accel * Disp)";
+            }
+            if (fvel.equals("")) {
+                // add the algorithm
+                return "fVel  =  iVel  +  (Accel * Time)";
+            }
+        }
+
+        // Solving for Disp (Generate dist vs. time graph)
+        if (varia.equals("Disp")) {
+            if (fvel.equals("") && disp.equals("")) {
+                // add the algorithm here
+                return "Disp  =  (1/2 * Accel * Time^2)  +  (iVel * Time)";
+            }
+            if (accel.equals("") && disp.equals("")) {
+                // add the algorithm
+                return "Disp  =  ((iVel + fVel) / 2)  *  Time";
+            }
+            if (time.equals("") && disp.equals("")) {
+                // add the algorithm
+                return "fVel^2  =  iVel^2  +  (2 * Accel * Disp)";
+            }
+            if (disp.equals("")) {
+                // add the algorithm here
+                return "Disp  =  (1/2 * Accel * Time^2)  +  (iVel * Time)";
+            }
+        }
+
+        // Solving for Time (Generate dist vs. time graph)
+        if (varia.equals("Time")) {
+            if (disp.equals("") && time.equals("")) {
+                // add the algorithm
+                return "fVel  =  iVel  +  (Accel * Time)";
+            }
+            if (accel.equals("") && time.equals("")) {
+                // add the algorithm
+                return "Disp  =  ((iVel + fVel) / 2)  *  Time";
+            }
+            if (fvel.equals("") && time.equals("")) {
+                // add the algorithm here
+                return "Disp  =  (1/2 * Accel * Time^2)  +  (iVel * Time)";
+            }
+            if (time.equals("")) {
+                // add the algorithm
+                return "Disp  =  (1/2 * Accel * Time^2)  +  (iVel * Time)";
+            }
+        }
+
+        // Solving for Acceleration (Generate accel vs. time graph)
+        if (varia.equals("Accel")) {
+            if (disp.equals("") && accel.equals("")) {
+                // add the algorithm
+                return "fVel  =  iVel  +  (Accel * Time)";
+            }
+            if (fvel.equals("") && accel.equals("")) {
+                // add the algorithm here
+                return "Disp  =  (1/2 * Accel * Time^2)  +  (iVel * Time)";
+            }
+            if (time.equals("") && accel.equals("")) {
+                // add the algorithm
+                return "fVel^2  =  iVel^2  +  (2 * Accel * Disp)";
+            }
+            if (accel.equals("")) {
+                // add the algorithm
+                return "Disp  =  (1/2 * Accel * Time^2)  +  (iVel * Time)";
+            }
+        } else {
+            return "Not Enough Information";
+        }
+        return "";
+    }
 }
-
-
-
 
 
 
@@ -295,7 +414,7 @@ public class MainActivity extends AppCompatActivity {
 //                double convInitialVel = Double.parseDouble(vi);
 //
 //                // add the algorithm here
-//                return "fVel = " + String.format("%,3f", (((2 * convDisplacement) / convTime) - convInitialVel)) + "meters/second";
+//                return "fVel = " + String.format("%.3f", (((2 * convDisplacement) / convTime) - convInitialVel)) + "meters/second";
 //
 //            } else if (var.equals("iVel")) {
 //                double convTime = Double.parseDouble(t);
