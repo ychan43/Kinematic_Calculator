@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.kpate325.kinematic_calculator", appContext.getPackageName());
+        assertEquals("com.example.alexc.kinematic_calculator", appContext.getPackageName());
     }
 }
