@@ -12,6 +12,7 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 public class Results extends AppCompatActivity {
+
     LineGraphSeries<DataPoint> series;
 
     @Override
