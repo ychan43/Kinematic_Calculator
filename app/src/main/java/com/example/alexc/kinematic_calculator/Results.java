@@ -35,10 +35,10 @@ public class Results extends AppCompatActivity {
         plot.getViewport().setXAxisBoundsManual(true);
         plot.getViewport().setMinX(0);
         plot.getViewport().setMaxX(max);
-        for (int i = 0; i < t * 10; i++) {
-            ti = ti + 0.1;
+        for (int i = 0; i < t * 1000; i++) {
+            ti = ti + 0.001;
             d = vi*ti + 0.5*a*ti*ti;
-            series.appendData(new DataPoint(ti, d), true, (int)t * 10);
+            series.appendData(new DataPoint(ti, d), true, (int) (t * 1000));
         }
         plot.addSeries(series);
 
