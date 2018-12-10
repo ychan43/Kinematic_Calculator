@@ -22,16 +22,22 @@ public class MainActivity extends AppCompatActivity {
         graphBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!(Double.parseDouble(tim) < 0)) {
-                    Intent startIntent = new Intent(MainActivity.this, Results.class);
-                    startIntent.putExtra("vi", iVel);
-                    startIntent.putExtra("t", tim);
-                    startIntent.putExtra("a", acc);
-                    startActivity(startIntent);
-                } else {
+                try {
+                    if (!(Double.parseDouble(tim) < 0)) {
+                        Intent startIntent = new Intent(MainActivity.this, Results.class);
+                        startIntent.putExtra("vi", iVel);
+                        startIntent.putExtra("t", tim);
+                        startIntent.putExtra("a", acc);
+                        startActivity(startIntent);
+                    } else {
+                        Toast toast = new Toast(getApplicationContext());
+                        toast.setGravity(Gravity.TOP | Gravity.START, 0, 0);
+                        toast.makeText(MainActivity.this, "Time can not be negative.", toast.LENGTH_SHORT).show();
+                    }
+                } catch (Exception e) {
                     Toast toast = new Toast(getApplicationContext());
                     toast.setGravity(Gravity.TOP | Gravity.START, 0, 0);
-                    toast.makeText(MainActivity.this, "Time can not be negative", toast.LENGTH_SHORT).show();
+                    toast.makeText(MainActivity.this, "Not Enough Information To Create A Graph", toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -223,8 +229,6 @@ public class MainActivity extends AppCompatActivity {
                 double convTime = ((convFinalVel - convInitialVel) / convAcceleration);
                 transfer(""+convTime, ""+convInitialVel,""+convAcceleration);
 
-                double time = ((convFinalVel - convInitialVel) / convAcceleration);
-
                 // add the algorithm
                 return "Time = " + String.format("%.3f", ((convFinalVel - convInitialVel) / convAcceleration)) + " seconds";
             }
@@ -235,8 +239,6 @@ public class MainActivity extends AppCompatActivity {
                 double convTime = ((2 * convDisplacement) / (convInitialVel + convFinalVel));
                 double convAcceleration = ((convFinalVel - convInitialVel) / convTime);
                 transfer(""+convTime, ""+convInitialVel,""+convAcceleration);
-
-                double time = ((2 * convDisplacement) / (convInitialVel + convFinalVel));
 
                 // add the algorithm
                 return "Time = " + String.format("%.3f", ((2 * convDisplacement) / (convInitialVel + convFinalVel))) + " seconds";
