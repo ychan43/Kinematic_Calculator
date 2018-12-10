@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     Toast toast = new Toast(getApplicationContext());
                     toast.setGravity(Gravity.TOP | Gravity.START, 0, 0);
-                    toast.makeText(MainActivity.this, "Not Enough Information", toast.LENGTH_SHORT).show();
+                    toast.makeText(MainActivity.this, "Not Enough Information To Create A Graph", toast.LENGTH_SHORT).show();
                 }
             }
         });
