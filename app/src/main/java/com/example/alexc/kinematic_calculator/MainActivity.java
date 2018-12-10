@@ -181,13 +181,17 @@ public class MainActivity extends AppCompatActivity {
                 double convInitialVel = Double.parseDouble(vi);
                 double convAcceleration = Double.parseDouble(a);
 
+                double time = ((convFinalVel - convInitialVel) / convAcceleration);
+
                 // add the algorithm
-                return "Accel = " + String.format("%.3f", ((convFinalVel - convInitialVel) / convAcceleration)) + " seconds";
+                return "Time = " + String.format("%.3f", ((convFinalVel - convInitialVel) / convAcceleration)) + " seconds";
             }
             if (a.equals("") && t.equals("")) {
                 double convDisplacement = Double.parseDouble(d);
                 double convFinalVel = Double.parseDouble(vf);
                 double convInitialVel = Double.parseDouble(vi);
+
+                double time = ((2 * convDisplacement) / (convInitialVel + convFinalVel));
 
                 // add the algorithm
                 return "Time = " + String.format("%.3f", ((2 * convDisplacement) / (convInitialVel + convFinalVel))) + " seconds";
