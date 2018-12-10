@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     Toast toast = new Toast(getApplicationContext());
                     toast.setGravity(Gravity.TOP | Gravity.START, 0, 0);
-                    toast.makeText(MainActivity.this, "Time can not be negative.", toast.LENGTH_SHORT).show();
+                    toast.makeText(MainActivity.this, "Time can not be negative", toast.LENGTH_SHORT).show();
                 }
             }
         });
