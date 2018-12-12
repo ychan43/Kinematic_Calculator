@@ -300,7 +300,7 @@ public class MainActivity extends AppCompatActivity {
                 double convFinalVel = Double.parseDouble(vf);
                 double convInitialVel = Double.parseDouble(vi);
                 double convDisplacement = Double.parseDouble(d);
-                double convTime = ((((convFinalVel * convFinalVel) - (convInitialVel * convInitialVel)) / (2 * convDisplacement)));
+                double convTime = ((2 * convDisplacement) / (convInitialVel + convFinalVel));
                 double convAcceleration = ((convFinalVel - convInitialVel) / convTime);
                 transfer(""+convTime, ""+convInitialVel,""+convAcceleration);
 
