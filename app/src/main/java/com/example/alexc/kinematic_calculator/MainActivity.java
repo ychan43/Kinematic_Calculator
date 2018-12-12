@@ -249,17 +249,24 @@ public class MainActivity extends AppCompatActivity {
                 double convAcceleration = Double.parseDouble(a);
 
                 // add the algorithm here
-                double rt1 = ((((-1 * convInitialVel)) - Math.sqrt((convInitialVel * convInitialVel) + (2 * convAcceleration * convDisplacement))) / convAcceleration);
-                double rt2 = ((((-1 * convInitialVel)) + Math.sqrt((convInitialVel * convInitialVel) + (2 * convAcceleration * convDisplacement))) / convAcceleration);
+                if (convAcceleration == 0) {
+                    double rt1 = convDisplacement / convInitialVel;
+                    transfer(""+rt1, ""+convInitialVel,""+convAcceleration);
+                    return "Time = " + String.format("%.3f", rt1);
+                }
+                if (convAcceleration != 0) {
+                    double rt1 = (((((-1 * convInitialVel)) - Math.sqrt((convInitialVel * convInitialVel) - (2 * convAcceleration * convDisplacement)))) / convAcceleration);
+                    double rt2 = ((((-1 * convInitialVel)) + Math.sqrt((convInitialVel * convInitialVel) - (2 * convAcceleration * convDisplacement))) / convAcceleration);
 
-                if (rt1 > 0) {
-                    double convTime = rt1;
-                    transfer(""+convTime, ""+convInitialVel,""+convAcceleration);
-                    return "Time = " + String.format("%.3f", rt1) + " seconds";
-                } else {
-                    double convTime = rt2;
-                    transfer(""+convTime, ""+convInitialVel,""+convAcceleration);
-                    return "Time = " + String.format("%.3f", rt2) + " seconds";
+                    if (rt1 > 0) {
+                        double convTime = rt1;
+                        transfer(""+convTime, ""+convInitialVel,""+convAcceleration);
+                        return "Time = " + String.format("%.3f", convTime) + " seconds";
+                    } else {
+                        double convTime = rt2;
+                        transfer("" + convTime, "" + convInitialVel, "" + convAcceleration);
+                        return "Time = " + String.format("%.3f", convTime) + " seconds";
+                    }
                 }
             }
             if (t.equals("")) {
